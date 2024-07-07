@@ -67,7 +67,7 @@ func main() {
 	// User API
 	router.HandleFunc("/login", Login).Methods("POST")
 	router.HandleFunc("/welcome", Welcome).Methods("GET")
-	router.HandleFunc("/refresh", Refresh).Methods("POST")
+	router.HandleFunc("/refresh", RefreshToken).Methods("POST")
 
 	// Product API
 	router.HandleFunc("/products", GetProducts).Methods("GET")
@@ -182,7 +182,7 @@ func Welcome(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func Refresh(w http.ResponseWriter, r *http.Request) {
+func RefreshToken(w http.ResponseWriter, r *http.Request) {
 	claims, err := Auth(w, r)
 	if err != nil {
 		return
